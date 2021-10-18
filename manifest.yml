@@ -5,6 +5,3 @@ applications:
    disk_quota: 100M
    instances: 2
    command: "./bin/cf_debug_app"
-   env:
-     GOVERSION: 1.12.5
-     
