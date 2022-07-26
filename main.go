@@ -20,11 +20,17 @@ func main() {
 		time.Sleep(500 * time.Millisecond)
 		w.Write([]byte("OK\n"))
 	})
+	http.HandleFunc("/connection-close", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Connection", "close")
+		w.Write([]byte("OK with connection close\n"))
+
+	})
 
 	err := http.ListenAndServe(addr, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 }
 
 func env(w http.ResponseWriter, r *http.Request) {
